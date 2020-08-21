@@ -142,7 +142,12 @@ public class DateTimeUtil {
         return gc.getTime();
     }
 
-
+    /**
+     * 时间排序，根据传入的List时间列表和SORT_TYPE来进行升降排序
+     * @param dateList 事件列表
+     * @param sortType 排序类型（升序，降序）
+     * @return 排序后的时间列表
+     */
     public static List<Date> sortByDate(List<Date> dateList,SORT_TYPE sortType){
         if (dateList.isEmpty()){
             throw new NullPointerException(INVALID_DATE_ERR);
@@ -161,5 +166,7 @@ public class DateTimeUtil {
         }
         return dateList;
     }
+
+
 }
 
