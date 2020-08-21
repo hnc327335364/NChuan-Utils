@@ -167,6 +167,47 @@ public class DateTimeUtil {
         return dateList;
     }
 
+    /**
+     * 获取指定时间当月第一天对应的日期
+     * @param date 参数可以为null，默认当前时间
+     * @return
+     */
+    public Date getNowMonthFistDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        if(date != null) {
+            cal.setTime(date);
+        }
+        cal.set(Calendar.DATE, 1);//设置日为第一天
+        try {
+            return sdf.parse(sdf.format(cal.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+    /**
+     * 获取指定时间当月最后一天对应的日期
+     * @param date
+     * @return
+     */
+    public Date getNowMothLastDate(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Calendar cal = Calendar.getInstance();
+        if(date != null) {
+            cal.setTime(date);
+        }
+        cal.set(Calendar.DATE, cal.getActualMaximum(Calendar.DATE));//设置日为当月最大天数
+        try {
+            return sdf.parse(sdf.format(cal.getTime()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return date;
+    }
+
+
 
 }
 
